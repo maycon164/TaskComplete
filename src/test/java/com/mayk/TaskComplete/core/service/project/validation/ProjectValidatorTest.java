@@ -1,4 +1,4 @@
-package com.mayk.TaskComplete.core.service.project;
+package com.mayk.TaskComplete.core.service.project.validation;
 
 import com.mayk.TaskComplete.core.model.Project;
 import com.mayk.TaskComplete.core.model.User;
