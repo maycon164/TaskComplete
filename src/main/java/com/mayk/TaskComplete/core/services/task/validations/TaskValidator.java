@@ -1,6 +1,14 @@
-package com.mayk.TaskComplete.core.validators;
+package com.mayk.TaskComplete.core.services.task.validations;
 
-public class UpdateTaskValidator {
+import com.mayk.TaskComplete.core.services.task.validations.dto.AddNewTaskValidatorDTO;
+import com.mayk.TaskComplete.core.services.task.validations.dto.UpdateTaskValidatorDTO;
+import com.mayk.TaskComplete.core.validators.NotificationError;
+
+public class TaskValidator {
+
+    public NotificationError validateAddNewTask(AddNewTaskValidatorDTO dto) {
+        return new NotificationError();
+    }
 
     public NotificationError validate(UpdateTaskValidatorDTO taskValidatorDTO) {
         NotificationError notificationError = new NotificationError();
