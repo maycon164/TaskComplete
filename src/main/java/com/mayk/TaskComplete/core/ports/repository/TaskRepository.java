@@ -4,11 +4,13 @@ import com.mayk.TaskComplete.core.model.Project;
 import com.mayk.TaskComplete.core.model.Task;
 import com.mayk.TaskComplete.core.model.TaskStatus;
 
+import java.util.Optional;
+
 public interface TaskRepository {
 
     Task saveTask(Project project, Task task);
 
-    Task getTaskById(Integer taskId);
+    Optional<Task> findTaskById(Long taskId);
 
-    void updateStatusTask(Integer taskId, TaskStatus taskStatus);
+    void updateStatusTask(Long taskId, TaskStatus taskStatus);
 }

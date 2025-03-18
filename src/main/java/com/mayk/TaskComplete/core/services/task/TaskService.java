@@ -2,6 +2,7 @@ package com.mayk.TaskComplete.core.services.task;
 
 import com.mayk.TaskComplete.core.exception.AddNewTaskException;
 import com.mayk.TaskComplete.core.exception.ProjectNotFoundException;
+import com.mayk.TaskComplete.core.exception.TaskNotFoundException;
 import com.mayk.TaskComplete.core.exception.TaskUpdateStatusException;
 import com.mayk.TaskComplete.core.model.Project;
 import com.mayk.TaskComplete.core.model.Task;
@@ -61,8 +62,8 @@ public class TaskService {
         return taskRepository.saveTask(project, task);
     }
 
-    public Task updateTaskStatus(TaskStatus taskStatus, Integer taskId){
-        Task task = taskRepository.getTaskById(taskId);
+    public Task updateTaskStatus(TaskStatus taskStatus, Long taskId){
+        Task task = taskRepository.findTaskById(taskId).orElseThrow(TaskNotFoundException::new);
 
         NotificationError notificationError = taskValidator.validate(new UpdateTaskValidatorDTO(task, taskStatus));
 
@@ -70,6 +71,7 @@ public class TaskService {
             throw new TaskUpdateStatusException(notificationError.getErrors());
         }
 
+        taskRepository.updateStatusTask(task.id(), taskStatus);
         return task;
     }
 
