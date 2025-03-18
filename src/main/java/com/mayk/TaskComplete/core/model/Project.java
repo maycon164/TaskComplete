@@ -10,5 +10,6 @@ public record Project (
     LocalDate createdAt,
     User createdBy,
     User projectOwner,
-    List<Task> tasks
+    List<Task> tasks,
+    List<User> teamMembers
 ) { }

@@ -15,6 +15,7 @@ public class ProjectBuilder {
     private User createdBy;
     private User projectOwner;
     private List<Task> tasks;
+    private List<User> teamMembers;
 
     private ProjectBuilder() {}
 
@@ -57,7 +58,12 @@ public class ProjectBuilder {
         return this;
     }
 
+    public ProjectBuilder teamMembers(List<User> teamMembers) {
+        this.teamMembers = teamMembers;
+        return this;
+    }
+
     public Project build(){
-        return new Project(id, name, description, createdAt, createdBy, projectOwner, tasks);
+        return new Project(id, name, description, createdAt, createdBy, projectOwner, tasks, teamMembers);
     }
 }
