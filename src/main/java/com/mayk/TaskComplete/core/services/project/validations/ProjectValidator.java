@@ -9,7 +9,7 @@ public class ProjectValidator {
         return new NotificationError();
     }
 
-    public NotificationError validateAddTeamMember() {
+    public NotificationError validateAddTeamMember(ValidateAddTeamMemberDTO validateAddTeamMemberDTO) {
         return new NotificationError();
     }
 

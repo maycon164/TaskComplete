@@ -10,6 +10,7 @@ import com.mayk.TaskComplete.core.ports.EmailServicePort;
 import com.mayk.TaskComplete.core.ports.repository.ProjectRepository;
 import com.mayk.TaskComplete.core.dto.ProjectDTO;
 import com.mayk.TaskComplete.core.services.project.validations.ProjectValidator;
+import com.mayk.TaskComplete.core.services.project.validations.ValidateAddTeamMemberDTO;
 import com.mayk.TaskComplete.core.validators.NotificationError;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -47,7 +48,11 @@ public class ProjectService {
     public void addTeamMember(User user, Long projectId, String email) {
         Project project = projectRepository.findById(projectId).orElseThrow(ProjectNotFoundException::new);
 
-        NotificationError notificationError = projectValidator.validateAddTeamMember();
+        NotificationError notificationError = projectValidator.validateAddTeamMember(new ValidateAddTeamMemberDTO(
+                user,
+                project,
+                email
+        ));
 
         if(notificationError.hasErrors()) {
             throw new AddTeamMemberException(notificationError.getErrors());

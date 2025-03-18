@@ -64,7 +64,7 @@ public class ProjectServiceTest {
                 .build();
 
         Mockito.when(projectRepository.findById(1L)).thenReturn(Optional.of(project));
-        Mockito.when(projectValidator.validateAddTeamMember()).thenReturn(new NotificationError());
+        Mockito.when(projectValidator.validateAddTeamMember(Mockito.any())).thenReturn(new NotificationError());
 
         projectService.addTeamMember(user, projectId, email);
 
@@ -100,7 +100,7 @@ public class ProjectServiceTest {
         var notification = new NotificationError();
         notification.addError("Teste");
 
-        Mockito.when(projectValidator.validateAddTeamMember()).thenReturn(notification);
+        Mockito.when(projectValidator.validateAddTeamMember(Mockito.any())).thenReturn(notification);
 
         Assertions.assertThrows(AddTeamMemberException.class, () -> {
            projectService.addTeamMember(user, projectId, email);
