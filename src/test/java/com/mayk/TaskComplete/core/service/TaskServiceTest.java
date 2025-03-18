@@ -5,7 +5,7 @@ import com.mayk.TaskComplete.core.model.Task;
 import com.mayk.TaskComplete.core.model.TaskStatus;
 import com.mayk.TaskComplete.core.model.User;
 import com.mayk.TaskComplete.core.ports.repository.TaskRepository;
-import com.mayk.TaskComplete.core.services.TaskService;
+import com.mayk.TaskComplete.core.services.task.TaskService;
 import com.mayk.TaskComplete.core.validators.NotificationError;
 import com.mayk.TaskComplete.core.validators.UpdateTaskValidator;
 import com.mayk.TaskComplete.core.dto.TaskDTO;
@@ -15,8 +15,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-
-import java.util.List;
 
 public class TaskServiceTest {
 

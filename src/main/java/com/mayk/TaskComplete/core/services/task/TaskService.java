@@ -1,4 +1,4 @@
-package com.mayk.TaskComplete.core.services;
+package com.mayk.TaskComplete.core.services.task;
 
 import com.mayk.TaskComplete.core.exception.TaskUpdateStatusException;
 import com.mayk.TaskComplete.core.model.Task;

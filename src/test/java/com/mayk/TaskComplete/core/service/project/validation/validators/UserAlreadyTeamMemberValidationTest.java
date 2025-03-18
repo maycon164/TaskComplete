@@ -3,7 +3,7 @@ package com.mayk.TaskComplete.core.service.project.validation.validators;
 import com.mayk.TaskComplete.core.model.Project;
 import com.mayk.TaskComplete.core.model.User;
 import com.mayk.TaskComplete.core.model.builder.ProjectBuilder;
-import com.mayk.TaskComplete.core.services.project.validations.ProjectValidationsMsg;
+import com.mayk.TaskComplete.core.services.project.validations.ProjectValidationsMessages;
 import com.mayk.TaskComplete.core.services.project.validations.ValidateAddTeamMemberDTO;
 import com.mayk.TaskComplete.core.services.project.validations.validators.UserIsAlreadyATeamMemberInProject;
 import com.mayk.TaskComplete.core.validators.NotificationError;
@@ -37,7 +37,7 @@ public class UserAlreadyTeamMemberValidationTest {
 
         validator.validate(notificationError, dto);
 
-        Assertions.assertEquals(ProjectValidationsMsg.USER_ALREADY_PROJECT_TEAM_MEMBER, notificationError.getErrors().get(0));
+        Assertions.assertEquals(ProjectValidationsMessages.USER_ALREADY_PROJECT_TEAM_MEMBER, notificationError.getErrors().get(0));
     }
 
     @Test
