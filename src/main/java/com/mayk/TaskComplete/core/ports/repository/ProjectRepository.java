@@ -1,11 +1,13 @@
-package com.mayk.TaskComplete.core.repository;
+package com.mayk.TaskComplete.core.ports.repository;
 
 import com.mayk.TaskComplete.core.model.Project;
+
+import java.util.Optional;
 
 public interface ProjectRepository {
 
     Project saveProject(Project project);
 
-    Project getProjectById(Integer id);
+    Optional<Project> findById(Long id);
 
 }

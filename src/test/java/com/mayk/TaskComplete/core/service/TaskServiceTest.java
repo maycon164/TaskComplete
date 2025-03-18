@@ -4,12 +4,11 @@ import com.mayk.TaskComplete.core.exception.TaskUpdateStatusException;
 import com.mayk.TaskComplete.core.model.Task;
 import com.mayk.TaskComplete.core.model.TaskStatus;
 import com.mayk.TaskComplete.core.model.User;
-import com.mayk.TaskComplete.core.repository.TaskRepository;
+import com.mayk.TaskComplete.core.ports.repository.TaskRepository;
 import com.mayk.TaskComplete.core.services.TaskService;
 import com.mayk.TaskComplete.core.validators.NotificationError;
 import com.mayk.TaskComplete.core.validators.UpdateTaskValidator;
-import com.mayk.TaskComplete.core.validators.UpdateTaskValidatorDTO;
-import com.mayk.TaskComplete.infra.dto.TaskDTO;
+import com.mayk.TaskComplete.core.dto.TaskDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -48,7 +47,7 @@ public class TaskServiceTest {
     void givenTask_updateTaskStatus() {
         TaskStatus status = TaskStatus.IN_PROGRESS;
         Integer taskId = 1;
-        Mockito.when(updateTaskValidator.validate(Mockito.any())).thenReturn(new NotificationError(List.of()));
+        Mockito.when(updateTaskValidator.validate(Mockito.any())).thenReturn(new NotificationError());
 
         Task task = taskService.updateTaskStatus(status, taskId);
 
@@ -61,11 +60,10 @@ public class TaskServiceTest {
         TaskStatus status = TaskStatus.IN_PROGRESS;
         Integer taskId = 1;
 
-        Mockito.when(updateTaskValidator.validate(Mockito.any())).thenReturn(new NotificationError(List.of(
-                "Task does not exist",
-                "User has no permission to modify",
-                "User is blocked"
-        )));
+        var notification = new NotificationError();
+        notification.addError("Task does not exist");
+
+        Mockito.when(updateTaskValidator.validate(Mockito.any())).thenReturn(notification);
 
         Assertions.assertThrows(TaskUpdateStatusException.class, () -> {
             taskService.updateTaskStatus(status, taskId);

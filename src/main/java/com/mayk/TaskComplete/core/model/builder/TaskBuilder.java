@@ -7,7 +7,7 @@ import com.mayk.TaskComplete.core.model.User;
 import java.time.LocalDate;
 
 public class TaskBuilder {
-
+    private Long id;
     private String name;
     private String description;
     private TaskStatus taskStatus;
@@ -18,8 +18,14 @@ public class TaskBuilder {
     private TaskBuilder() {
     }
 
+
     public static TaskBuilder builder() {
         return new TaskBuilder();
+    }
+
+    public TaskBuilder id(Long id) {
+        this.id = id;
+        return this;
     }
 
     public TaskBuilder name(String name) {
@@ -53,6 +59,6 @@ public class TaskBuilder {
     }
 
     public Task build() {
-        return new Task(name, description, taskStatus, assignTo, createdBy, createdAt);
+        return new Task(id, name, description, taskStatus, assignTo, createdBy, createdAt);
     }
 }

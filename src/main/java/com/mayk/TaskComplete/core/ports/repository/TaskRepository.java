@@ -1,4 +1,4 @@
-package com.mayk.TaskComplete.core.repository;
+package com.mayk.TaskComplete.core.ports.repository;
 
 import com.mayk.TaskComplete.core.model.Task;
 import com.mayk.TaskComplete.core.model.TaskStatus;

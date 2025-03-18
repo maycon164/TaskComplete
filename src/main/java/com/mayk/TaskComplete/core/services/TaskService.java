@@ -5,11 +5,11 @@ import com.mayk.TaskComplete.core.model.Task;
 import com.mayk.TaskComplete.core.model.TaskStatus;
 import com.mayk.TaskComplete.core.model.User;
 import com.mayk.TaskComplete.core.model.builder.TaskBuilder;
-import com.mayk.TaskComplete.core.repository.TaskRepository;
+import com.mayk.TaskComplete.core.ports.repository.TaskRepository;
 import com.mayk.TaskComplete.core.validators.NotificationError;
 import com.mayk.TaskComplete.core.validators.UpdateTaskValidator;
 import com.mayk.TaskComplete.core.validators.UpdateTaskValidatorDTO;
-import com.mayk.TaskComplete.infra.dto.TaskDTO;
+import com.mayk.TaskComplete.core.dto.TaskDTO;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -46,7 +46,7 @@ public class TaskService {
         NotificationError notificationError = updateTaskValidator.validate(new UpdateTaskValidatorDTO(task, taskStatus));
 
         if(notificationError.hasErrors()) {
-            throw new TaskUpdateStatusException(notificationError.errors());
+            throw new TaskUpdateStatusException(notificationError.getErrors());
         }
 
         return task;

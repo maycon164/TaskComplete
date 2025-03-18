@@ -1,4 +1,4 @@
-package com.mayk.TaskComplete.infra.dto;
+package com.mayk.TaskComplete.core.dto;
 
 import com.mayk.TaskComplete.core.model.TaskStatus;
 
