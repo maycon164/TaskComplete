@@ -1,4 +1,4 @@
-package com.mayk.TaskComplete.core.service;
+package com.mayk.TaskComplete.core.service.project;
 
 import com.mayk.TaskComplete.core.dto.SendInvitationToProjectDTO;
 import com.mayk.TaskComplete.core.exception.AddTeamMemberException;

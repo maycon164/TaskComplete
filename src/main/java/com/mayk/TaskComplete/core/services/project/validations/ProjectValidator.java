@@ -2,15 +2,22 @@ package com.mayk.TaskComplete.core.services.project.validations;
 
 import com.mayk.TaskComplete.core.validators.NotificationError;
 
+import java.util.List;
+
 public class ProjectValidator {
 
-    public NotificationError validate() {
+    private final List<AddTeamMemberValidator> addTeamMemberValidations;
 
-        return new NotificationError();
+    public ProjectValidator(List<AddTeamMemberValidator> addTeamMemberValidations) {
+        this.addTeamMemberValidations = addTeamMemberValidations;
     }
 
     public NotificationError validateAddTeamMember(ValidateAddTeamMemberDTO validateAddTeamMemberDTO) {
-        return new NotificationError();
+        NotificationError notificationError =  new NotificationError();
+
+        addTeamMemberValidations.forEach(validator -> validator.validate(notificationError, validateAddTeamMemberDTO));
+
+        return notificationError;
     }
 
 }
